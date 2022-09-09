@@ -1,90 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+//Bai 1
+function thue(a){
+    if (a>0 && a<=60){
+        return 5;
+    }
+    if (a>60 && a<=120){
+        return 10;
+    }
+    if (a>60 && a<=120){
+        return 15;
+    }
+    if (a>120 && a<=210){
+        return 20;
+    }
+    if (a>210 && a<=384){
+        return 25;
+    }
+    if (a>384 && a<=624){
+        return 30;
+    }
+    if (a>624 && a<=960){
+        return 35;
+    }
+}
+document.getElementById("Find").onclick=function(){
+    var hoTen=document.getElementById("Name").value;
+    var ThuNhap=document.getElementById("Sum").value*1;
+    var Nguoi=document.getElementById("Human").value*1;
+    var ThuNhapChiu=ThuNhap - 4 - Nguoi*4;
+    var kq;
+    var kq="Thuế thu nhập cá nhân của bạn là: " + thue(ThuNhapChiu);
+    document.getElementById("Xapxep").innerHTML=kq;
+}
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-    <div class="card container">
-        <h5 class="card-header">Bài 1: In số</h5>
-        
-        <div class="card-body">
-            <p>Họ và tên</p>
-            <input id="Name" type="text">
-            <p>Tổng thu nhập năm</p>
-            <input id="Sum" type="number">
-            <p>Số người phụ thuộc</p>
-            <input id="Human" type="number">
-            <button type="button" class="btn btn-primary" id="Find">Sắp xếp</button>
-        </div>
-        <div class="card-footer bg-dark">
-            <p id="Xapxep" class="bg-dark" style="color: white ;"></p>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <div class="card container">
-      <h5 class="card-header">Bài 2: Tính tiền biên lai</h5>
-      <div class="card-body">
-        <p>Loại khách hàng</p>
-        <button type="button" class="btn btn-primary" id="nhaDan">Nhà Dân</button>
-        <button type="button" class="btn btn-primary" id="doanhNghiep">Doanh Nghiệp</button>
-          <p>Mã khách hàng</p>
-          <input id="ID" type="number">
-          <div id="Conect">
-            <p>Số kết nối</p>
-            <input id="Conect-number" type="number">
-          </div>
-          <p >Số kênh cao cấp</p>
-          <input id="highOptions" type="number">
-          <br>
-          <button type="button" class="btn btn-primary" id="FindB2">Tính toán</button>
-      </div>
-      <div class="card-footer bg-dark">
-          <p id="Print" class="bg-dark" style="color: white ;"></p>
-      </div>
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    
-    <script src="./main.js"></script>
-  </body>
-</html>
+//Bai 2
+function chuyen(a){
+    if(a>10){
+        return a-10;
+    }
+}
+document.getElementById("nhaDan").onclick=function(){
+    document.getElementById("Conect").style.display='none';
+    var b=1;
+    document.getElementById("FindB2").onclick=function(){
+        var id=document.getElementById("ID").value;
+        var number=document.getElementById("Conect-number").value;
+        var high=document.getElementById("highOptions").value;
+        var kq=0;
+        document.getElementById("Conect").style.display='none';
+        kq=4.5 + 20.5;
+        console.log(kq);
+        document.getElementById("Print").innerHTML=kq;
+    }
+}
+document.getElementById("doanhNghiep").onclick=function(){
+    document.getElementById("Conect").style.display='block';
+    var b=0;
+    document.getElementById("FindB2").onclick=function(){
+        var id=document.getElementById("ID").value;
+        var number=document.getElementById("Conect-number").value;
+        var high=document.getElementById("highOptions").value;
+        var kq=0;
+        kq=15;
+        if(number>10){
+            kq=kq+75+5*chuyen(number);
+        }else{
+            kq=kq+75;
+        }
+        kq=kq+high*50;
+        document.getElementById("Print").innerHTML=kq;
+    }
+}
